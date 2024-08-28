@@ -4,7 +4,7 @@ export const generateTokenAndSetCookie = (res, userId) => {
     const token = jwt.sign({ userId }, process.env.JWT_TOKEN_SECRET, {
         expiresIn: process.env.JWT_TOKEN_EXPIRY + "d",
     });
-    res.cookie("jwt", token, {
+    res.cookie("anylugar_session", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV !== "development",
         sameSite: "strict",
