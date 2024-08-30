@@ -1,35 +1,75 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { login, logout } from "./features/authSlice.js";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { Header, BottomNavbar, Loading } from "./components/index.js";
+import { Outlet } from "react-router-dom";
+import { AUTH_API_ENDPOINT } from "./constants.js";
+
+const darkTheme = createTheme({
+    palette: {
+        mode: "dark",
+        primary: {
+            main: "#a688fa",
+        },
+        background: {
+            default: "#181818",
+            paper: "#181818",
+        },
+    },
+});
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [loading, setLoading] = useState(true);
+    const dispatch = useDispatch();
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    useEffect(() => {
+        const fetchCurrentUser = async () => {
+            try {
+                const response = await axios.get(
+                    `${AUTH_API_ENDPOINT}/current-user`,
+                    {
+                        withCredentials: true,
+                    }
+                );
+
+                const userData = response.data;
+
+                if (userData) {
+                    dispatch(login(userData));
+                } else {
+                    dispatch(logout());
+                }
+            } catch (error) {
+                console.log("Error fetching current user:", error.message);
+                dispatch(logout());
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchCurrentUser();
+    }, [dispatch]);
+
+    return !loading ? (
+        <ThemeProvider theme={darkTheme}>
+            <CssBaseline />
+            <Header />
+            <BottomNavbar />
+            <main>
+                <Outlet />
+            </main>
+        </ThemeProvider>
+    ) : (
+        <>
+            <CssBaseline />
+            <ThemeProvider theme={darkTheme}>
+                <Loading />
+            </ThemeProvider>
+        </>
+    );
 }
 
-export default App
+export default App;
