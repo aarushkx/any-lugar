@@ -7,11 +7,20 @@ import { hashString } from "../utils/hash/hashString.js";
 export const register = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body;
 
-    if ([name, email, password].some((field) => field?.trim() === "")) {
+    if ([name, email, password].some((field) => field?.trim() === ""))
         return res.status(400).json({
             error: "All fields are required",
         });
-    }
+
+    if (name.length > 50)
+        return res.status(400).json({
+            error: "Name cannot exceed 50 characters",
+        });
+
+    if (email.length > 100)
+        return res.status(400).json({
+            error: "Email cannot exceed 100 characters",
+        });
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {

@@ -96,6 +96,7 @@ function CreatePlan() {
                         fullWidth
                         margin="normal"
                         variant="outlined"
+                        required
                     />
                     <TextField
                         label="Number of travelers"
@@ -138,7 +139,7 @@ function CreatePlan() {
                         margin="normal"
                         variant="outlined"
                         multiline
-                        rows={4}
+                        rows={3}
                     />
                     <Button
                         type="submit"

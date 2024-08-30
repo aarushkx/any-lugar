@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Typography, Box } from "@mui/material";
 import { useSelector } from "react-redux";
-import LogoIcon from "../assets/Logo.svg";
 
 function Logo() {
     const authStatus = useSelector((state) => state.auth.status);
@@ -27,7 +26,7 @@ function Logo() {
             onClick={handleClick}
         >
             <img
-                src={LogoIcon}
+                src="/logo.svg"
                 alt="Logo"
                 style={{
                     width: 25,

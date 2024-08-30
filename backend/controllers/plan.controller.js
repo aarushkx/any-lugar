@@ -6,6 +6,25 @@ export const createPlan = asyncHandler(async (req, res) => {
     const { destination, traveller, budget, description } = req.body;
     const userId = req.user._id;
 
+    if (!destination || destination.trim() === "")
+        return res.status(400).json({ error: "Destination is required" });
+
+    if (destination.length > 100) return res.status(400).json({
+        error: "Destination cannot be more than 100 characters long",
+    });
+
+    if (!traveller || traveller <= 0 || traveller > 100000)
+        return res
+            .status(400)
+            .json({ error: "Number of travellers is invalid" });
+
+    if (!budget || budget <= 0 || budget > 100000000)
+        return res.status(400).json({ error: "Budget is invalid" });
+
+    if (description.length > 1000) return res.status(400).json({
+        error: "Description cannot be more than 1000 characters long",
+    });
+
     const newPlan = new Plan({
         destination,
         traveller,

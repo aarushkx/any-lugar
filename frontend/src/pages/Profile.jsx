@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Box, Button, Toolbar } from "@mui/material";
-import EditProfileModal from "../components/Modal/EditProfileModal";
+import { EditProfileModal } from "../components/index.js";
 import { useSelector } from "react-redux";
 import { Typography } from "@mui/material";
 
@@ -30,7 +30,7 @@ function Profile() {
                 <Typography variant="h3" sx={{ mb: 2 }}>
                     {user.name}
                 </Typography>
-                <Typography variant="body1" sx={{ mb: 2 }}>
+                <Typography color="textSecondary" variant="body1" sx={{ mb: 2 }}>
                     {user.email}
                 </Typography>
                 <Button

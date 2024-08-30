@@ -7,6 +7,7 @@ import axios from "axios";
 
 function UserTrip() {
     const { tripId } = useParams();
+
     const [trip, setTrip] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -34,21 +35,17 @@ function UserTrip() {
         fetchTrip();
     }, [tripId]);
 
-    if (loading) {
-        return <Loading />;
-    }
+    if (loading) return <Loading />;
 
-    if (error) {
+    if (error)
         return (
             <Typography variant="h6" color="error">
                 {error}
             </Typography>
         );
-    }
 
-    if (!trip) {
+    if (!trip)
         return <Typography variant="h6">No trip details available</Typography>;
-    }
 
     const { destination, traveller, budget, description, createdAt } = trip;
 
@@ -57,7 +54,7 @@ function UserTrip() {
             <Box>
                 <Typography variant="h4">{destination}</Typography>
                 <Typography variant="body1">Travelers: {traveller}</Typography>
-                <Typography variant="body1">Budget: Rs.{budget}</Typography>
+                <Typography variant="body1">Budget: ₹{budget}</Typography>
                 <Typography variant="body1">{description}</Typography>
                 <Typography variant="caption">
                     Created at:{" "}

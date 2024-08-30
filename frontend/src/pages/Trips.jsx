@@ -4,7 +4,7 @@ import { Loading } from "../components/index.js";
 import { PLAN_API_ENDPOINT } from "../constants.js";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import TripCard from "../components/TripCard/TripCard";
+import { TripCard } from "../components/index.js";
 
 function Trips() {
     const userData = useSelector((state) => state.auth.userData);
@@ -66,31 +66,21 @@ function Trips() {
                     </Typography>
                 )}
 
-                <Box align="center" mb={8}>
-                    {trips.map((trip) => (
-                        <TripCard key={trip._id} trip={trip} />
-                    ))}
-                </Box>
+                {!loading && !error && trips.length === 0 && (
+                    <Typography variant="body1" align="center" sx={{ mt: 4 }}>
+                        Hmm... Looks like you've not created any trips yet.
+                        Start planning your first trip now!
+                    </Typography>
+                )}
+
+                {!loading && trips.length > 0 && (
+                    <Box align="center" mb={8}>
+                        {trips.map((trip) => (
+                            <TripCard key={trip._id} trip={trip} />
+                        ))}
+                    </Box>
+                )}
             </Box>
-            {/* <Typography color="primary" component="h1" variant="h5">
-                Your Trips
-            </Typography>
-            {loading && <Loading />}
-            {error && (
-                <Typography
-                    color="error"
-                    variant="body2"
-                    align="center"
-                    sx={{ mt: 2 }}
-                >
-                    {error}
-                </Typography>
-            )}
-            <Box align="center" mb={12}>
-                {trips.map((trip) => (
-                    <TripCard key={trip._id} trip={trip} />
-                ))}
-            </Box> */}
         </Container>
     );
 }
