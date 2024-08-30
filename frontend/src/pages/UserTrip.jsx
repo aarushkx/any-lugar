@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Container, Typography, Box } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
+import { Container, Typography, Box, Toolbar, Button } from "@mui/material";
 import { PLAN_API_ENDPOINT } from "../constants.js";
 import { Loading } from "../components/index.js";
 import axios from "axios";
 
 function UserTrip() {
+    const navigate = useNavigate();
     const { tripId } = useParams();
 
     const [trip, setTrip] = useState(null);
@@ -35,11 +36,25 @@ function UserTrip() {
         fetchTrip();
     }, [tripId]);
 
+    const handleDelete = async () => {
+        try {
+            await axios.delete(`${PLAN_API_ENDPOINT}/${tripId}`, {
+                withCredentials: true,
+            });
+            navigate("/trips");
+        } catch (error) {
+            setError(
+                error.response?.data?.error ||
+                    "An error occurred while deleting the plan"
+            );
+        }
+    };
+
     if (loading) return <Loading />;
 
     if (error)
         return (
-            <Typography variant="h6" color="error">
+            <Typography align="center" variant="body1" color="error">
                 {error}
             </Typography>
         );
@@ -50,16 +65,60 @@ function UserTrip() {
     const { destination, traveller, budget, description, createdAt } = trip;
 
     return (
-        <Container>
-            <Box>
-                <Typography variant="h4">{destination}</Typography>
-                <Typography variant="body1">Travelers: {traveller}</Typography>
-                <Typography variant="body1">Budget: ₹{budget}</Typography>
-                <Typography variant="body1">{description}</Typography>
-                <Typography variant="caption">
-                    Created at:{" "}
-                    {new Date(createdAt).toLocaleDateString("en-GB")}
+        <Container maxWidth="sm">
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    padding: 4,
+                }}
+            >
+                <Typography color="primary" component="h1" variant="h5">
+                    {destination}
                 </Typography>
+
+                <Typography sx={{ mt: 2 }} variant="h6">
+                    Travellers: {traveller}
+                </Typography>
+                <Typography variant="h6">Budget: ₹{budget}</Typography>
+                <Typography
+                    sx={{ mt: 2, mb: 2 }}
+                    color="textSecondary"
+                    align="center"
+                    variant="body1"
+                >
+                    {description}
+                </Typography>
+
+                <Box>
+                    <Button
+                        variant="outlined"
+                        color="error"
+                        sx={{ mr: 1 }}
+                        onClick={handleDelete}
+                    >
+                        Delete Plan
+                    </Button>
+                    <Button
+                        variant="contained"
+                        // onClick={}
+                    >
+                        Suggestions
+                    </Button>
+                </Box>
+                {error && (
+                    <Typography
+                        color="error"
+                        variant="body2"
+                        align="center"
+                        sx={{ mt: 2 }}
+                    >
+                        {error}
+                    </Typography>
+                )}
+
+                <Toolbar />
             </Box>
         </Container>
     );

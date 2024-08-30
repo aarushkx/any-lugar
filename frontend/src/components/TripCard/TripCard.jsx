@@ -17,7 +17,7 @@ function TripCard({ trip }) {
                     md: 500, // Width on medium screens (laptops)
                     lg: 600, // Width on large screens (desktops)
                 },
-                height: 200,
+                height: 170,
                 margin: 4,
                 overflow: "hidden",
                 textOverflow: "ellipsis",
@@ -32,7 +32,7 @@ function TripCard({ trip }) {
             onClick={() => navigate(`/trips/${_id}`)}
         >
             <CardContent>
-                <Box display="flex" justifyContent="space-between" mb={4}>
+                <Box display="flex" justifyContent="space-between" mb={2}>
                     <Typography variant="h5" noWrap>
                         {destination}
                     </Typography>

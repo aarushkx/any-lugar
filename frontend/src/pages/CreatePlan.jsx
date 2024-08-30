@@ -37,8 +37,6 @@ function CreatePlan() {
         setError("");
 
         try {
-            const { destination, traveller, budget, description } = formData;
-
             const response = await axios.post(
                 `${PLAN_API_ENDPOINT}/create`,
                 {
@@ -54,7 +52,6 @@ function CreatePlan() {
             const newPlan = response.data;
 
             if (newPlan) {
-                console.log("Plan created successfully!");
                 navigate("/trips");
             } else {
                 setError("Failed to create the plan.");
@@ -66,6 +63,8 @@ function CreatePlan() {
             );
         }
     };
+
+    const { destination, traveller, budget, description } = formData;
 
     return (
         <Container component="main" maxWidth="xs">
@@ -90,7 +89,7 @@ function CreatePlan() {
                         label="Destination"
                         type="text"
                         name="destination"
-                        value={formData.destination}
+                        value={destination}
                         onChange={handleChange}
                         placeholder="Mumbai"
                         fullWidth
@@ -102,19 +101,20 @@ function CreatePlan() {
                         label="Number of travelers"
                         type="text"
                         name="traveller"
-                        value={formData.traveller}
+                        value={traveller}
                         onChange={handleChange}
                         placeholder="1"
                         fullWidth
                         margin="normal"
                         variant="outlined"
+                        required
                     />
 
                     <TextField
                         label="Budget"
                         type="text"
                         name="budget"
-                        value={formData.budget}
+                        value={budget}
                         onChange={handleChange}
                         placeholder="10,000"
                         fullWidth
@@ -127,12 +127,13 @@ function CreatePlan() {
                                 </InputAdornment>
                             ),
                         }}
+                        required
                     />
                     <TextField
                         label="Description"
                         type="text"
                         name="description"
-                        value={formData.description}
+                        value={description}
                         onChange={handleChange}
                         placeholder="Historical sites, cuisines, famous street food, city skyline and sunset walk along Marine Drive"
                         fullWidth

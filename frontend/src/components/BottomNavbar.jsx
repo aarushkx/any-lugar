@@ -29,13 +29,13 @@ function BottomNavbar() {
             isActive: authStatus,
             icon: <AddBoxIcon />,
         },
-        {
-            name: "Chat",
-            value: "chat",
-            url: "/chat",
-            isActive: authStatus,
-            icon: <ChatIcon />,
-        },
+        // {
+        //     name: "Chat",
+        //     value: "chat",
+        //     url: "/chat",
+        //     isActive: authStatus,
+        //     icon: <ChatIcon />,
+        // },
         {
             name: "Profile",
             value: "profile",

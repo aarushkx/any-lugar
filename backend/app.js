@@ -20,9 +20,11 @@ app.use(cookieParser());
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import planRoutes from "./routes/plan.routes.js";
+import aiRoutes from "./routes/ai.routes.js";
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/plans", planRoutes);
+app.use("/api/v1/ai", aiRoutes);
 
 export { app };
