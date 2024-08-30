@@ -1,20 +1,21 @@
 import React from "react";
-import { CircularProgress } from "@mui/material";
+import { Container, Box, CircularProgress } from "@mui/material";
 
 function Loading() {
-    // ADD HEIGHT PROP AND DYNAMIC BACKGROUND COLOR BASED ON THEME
     return (
-        <div
-            style={{
-                backgroundColor: "#181818",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "100vh",
+        <Box
+            sx={{
+                position: "fixed",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                zIndex: 9999,
             }}
         >
             <CircularProgress />
-        </div>
+        </Box>
+
+        // </div>
     );
 }
 
