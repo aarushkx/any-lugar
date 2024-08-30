@@ -7,6 +7,8 @@ import Profile from "./Profile";
 import Chat from "./Chat";
 import Places from "./Places";
 import Landing from "./Landing";
+import UserTrip from "./UserTrip";
+import LoadingPage from "./LoadingPage";
 
 export {
     Trips,
@@ -18,4 +20,6 @@ export {
     Chat,
     Places,
     Landing,
+    UserTrip,
+    LoadingPage,
 };

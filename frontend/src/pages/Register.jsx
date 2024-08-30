@@ -80,7 +80,7 @@ const Register = () => {
                         padding: 4,
                     }}
                 >
-                    <Typography component="h1" variant="h5">
+                    <Typography color="primary" component="h1" variant="h5">
                         Register
                     </Typography>
                     <Box
@@ -140,7 +140,7 @@ const Register = () => {
                             variant="contained"
                             color="primary"
                             fullWidth
-                            sx={{ mt: 3, mb: 2 }}
+                            sx={{ mt: 2, mb: 2 }}
                         >
                             Register
                         </Button>

@@ -1,8 +1,12 @@
 import React from "react";
 import { Card, CardContent, Typography, Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function TripCard({ trip }) {
-    const { destination, traveller, budget, description, createdAt } = trip;
+    const navigate = useNavigate();
+
+    const { _id, destination, traveller, budget, description, createdAt } =
+        trip;
 
     return (
         <Card
@@ -18,13 +22,14 @@ function TripCard({ trip }) {
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 cursor: "pointer",
-                transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+                transition:
+                    "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
                 "&:hover": {
                     transform: "scale(1.05)",
                     boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
                 },
-
             }}
+            onClick={() => navigate(`/trips/${_id}`)}
         >
             <CardContent>
                 <Box display="flex" justifyContent="space-between" mb={4}>
@@ -33,7 +38,7 @@ function TripCard({ trip }) {
                     </Typography>
                     <Typography
                         variant="caption"
-                        color="text.secondary"
+                        color="textSecondary"
                         align="right"
                     >
                         {new Date(createdAt).toLocaleDateString("en-GB")}

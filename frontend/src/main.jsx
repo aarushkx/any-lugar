@@ -16,6 +16,7 @@ import {
     Chat,
     Places,
     Landing,
+    UserTrip,
 } from "./pages/index.js";
 
 const router = createBrowserRouter([
@@ -60,6 +61,14 @@ const router = createBrowserRouter([
                 element: (
                     <Protected isAuthenticated>
                         <Trips />
+                    </Protected>
+                ),
+            },
+            {
+                path: "/trips/:tripId",
+                element: (
+                    <Protected isAuthenticated>
+                        <UserTrip />
                     </Protected>
                 ),
             },

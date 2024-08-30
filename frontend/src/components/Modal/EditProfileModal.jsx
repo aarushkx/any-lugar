@@ -47,7 +47,6 @@ function EditProfileModal({ open, handleClose }) {
             ...formData,
             [e.target.name]: e.target.value,
         });
-        console.log(formData);
     };
 
     const handleSubmit = async (e) => {
@@ -114,6 +113,7 @@ function EditProfileModal({ open, handleClose }) {
                         fullWidth
                         margin="normal"
                         variant="outlined"
+                        placeholder="********"
                         onChange={handleChange}
                     />
                     {error && (

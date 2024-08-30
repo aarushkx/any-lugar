@@ -27,22 +27,16 @@ function Profile() {
                 >
                     Your Profile
                 </Typography>
-                <Typography color="textSecondary" variant="h6">
-                    Name
-                </Typography>
                 <Typography variant="h3" sx={{ mb: 2 }}>
                     {user.name}
                 </Typography>
-                <Typography color="textSecondary" variant="h6">
-                    Email
-                </Typography>
-                <Typography variant="h5" sx={{ mb: 2 }}>
+                <Typography variant="body1" sx={{ mb: 2 }}>
                     {user.email}
                 </Typography>
                 <Button
                     variant="contained"
                     color="primary"
-                    sx={{ mt: 3 }}
+                    sx={{ mt: 2 }}
                     onClick={() => setOpen(true)}
                 >
                     Edit Profile

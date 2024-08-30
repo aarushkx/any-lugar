@@ -7,6 +7,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { Header, BottomNavbar, Loading } from "./components/index.js";
 import { Outlet } from "react-router-dom";
 import { AUTH_API_ENDPOINT } from "./constants.js";
+import { LoadingPage } from "./pages/index.js";
 
 const darkTheme = createTheme({
     palette: {
@@ -66,7 +67,7 @@ function App() {
         <>
             <CssBaseline />
             <ThemeProvider theme={darkTheme}>
-                <Loading />
+                <LoadingPage />
             </ThemeProvider>
         </>
     );

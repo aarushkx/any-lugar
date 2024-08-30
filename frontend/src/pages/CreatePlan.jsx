@@ -145,7 +145,7 @@ function CreatePlan() {
                         variant="contained"
                         color="primary"
                         fullWidth
-                        sx={{ mt: 3, mb: 2 }}
+                        sx={{ mt: 2 }}
                     >
                         Create
                     </Button>
