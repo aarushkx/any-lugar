@@ -98,7 +98,7 @@ function CreatePlan() {
                         required
                     />
                     <TextField
-                        label="Number of travelers"
+                        label="Number of travellers"
                         type="text"
                         name="traveller"
                         value={traveller}
