@@ -44,7 +44,6 @@ function App() {
                     dispatch(logout());
                 }
             } catch (error) {
-                console.log("Error fetching current user:", error.message);
                 dispatch(logout());
             } finally {
                 setLoading(false);

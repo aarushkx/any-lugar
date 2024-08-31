@@ -17,7 +17,7 @@ function Landing() {
             }}
         >
             <Box sx={{ mt: 12 }}>
-                <Typography textAlign={"center"} variant="h4">
+                <Typography textAlign={"center"} variant="h5">
                     Welcome to
                 </Typography>
                 <Typography

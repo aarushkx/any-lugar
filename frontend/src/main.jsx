@@ -13,8 +13,6 @@ import {
     Trips,
     Profile,
     NotFoundPage,
-    Chat,
-    Places,
     Landing,
     UserTrip,
 } from "./pages/index.js";
@@ -77,22 +75,6 @@ const router = createBrowserRouter([
                 element: (
                     <Protected isAuthenticated>
                         <Profile />
-                    </Protected>
-                ),
-            },
-            {
-                path: "/chat",
-                element: (
-                    <Protected isAuthenticated>
-                        <Chat />
-                    </Protected>
-                ),
-            },
-            {
-                path: "/places",
-                element: (
-                    <Protected isAuthenticated>
-                        <Places />
                     </Protected>
                 ),
             },

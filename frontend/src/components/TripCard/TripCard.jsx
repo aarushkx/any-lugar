@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardContent, Typography, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { formatPrice } from "../../../utils/formatPrice.js";
 
 function TripCard({ trip }) {
     const navigate = useNavigate();
@@ -49,7 +50,7 @@ function TripCard({ trip }) {
                     Travellers: {traveller}
                 </Typography>
                 <Typography sx={{ mb: 2 }} align="left" variant="body1">
-                    Budget: ₹{budget}
+                    Budget: {formatPrice(budget)}
                 </Typography>
                 <Typography
                     color="textSecondary"
