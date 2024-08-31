@@ -1,7 +1,7 @@
-const AUTH_API_ENDPOINT = "http://localhost:8000/api/v1/auth";
-const USER_API_ENDPOINT = "http://localhost:8000/api/v1/users";
-const PLAN_API_ENDPOINT = "http://localhost:8000/api/v1/plans";
-const AI_API_ENDPOINT = "http://localhost:8000/api/v1/ai";
+const AUTH_API_ENDPOINT = "https://any-lugar.onrender.com/api/v1/auth";
+const USER_API_ENDPOINT = "https://any-lugar.onrender.com/api/v1/users";
+const PLAN_API_ENDPOINT = "https://any-lugar.onrender.com/api/v1/plans";
+const AI_API_ENDPOINT = "https://any-lugar.onrender.com/api/v1/ai";
 
 export {
     USER_API_ENDPOINT,
