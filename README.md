@@ -4,7 +4,8 @@ AnyLugar is a travel planning web application that allows users to plan and orga
 
 ## Preview
 
-<img src="./frontend/public/preview.gif" height="200" alt="Preview">
+<img src="/preview/image_1.png" width="200" alt="Preview"><img src="/preview/image_2.png" width="200" alt="Preview"><img src="/preview/image_3.png" width="200" alt="Preview"><img src="/preview/image_4.png" width="200" alt="Preview">
+
 
 ## View Project
 
