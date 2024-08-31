@@ -20,15 +20,15 @@ export const generateSuggestions = asyncHandler(async (req, res) => {
     const prompt = `Here is the input data: destination: ${destination}, number of travelers: ${traveller}, budget: ${budget}, description: ${description}.`;
 
     // ----------X----------
-    const countResult = await model.countTokens(prompt);
-    console.log(`Prompt token count: ${countResult.totalTokens}`);
-    const generateResult = await model.generateContent(prompt);
-    const usageMetadata = generateResult.response.usageMetadata;
-    console.log(`Prompt tokens used: ${usageMetadata.promptTokenCount}`);
-    console.log(
-        `Candidates tokens used: ${usageMetadata.candidatesTokenCount}`
-    );
-    console.log(`Total tokens used: ${usageMetadata.totalTokenCount}`);
+    // const countResult = await model.countTokens(prompt);
+    // console.log(`Prompt token count: ${countResult.totalTokens}`);
+    // const generateResult = await model.generateContent(prompt);
+    // const usageMetadata = generateResult.response.usageMetadata;
+    // console.log(`Prompt tokens used: ${usageMetadata.promptTokenCount}`);
+    // console.log(
+    //     `Candidates tokens used: ${usageMetadata.candidatesTokenCount}`
+    // );
+    // console.log(`Total tokens used: ${usageMetadata.totalTokenCount}`);
     // ----------X----------
 
     const result = await model.generateContent(prompt, { maxTokens: 100 });
